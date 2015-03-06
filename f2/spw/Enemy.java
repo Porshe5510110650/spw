@@ -32,7 +32,7 @@ public class Enemy extends Sprite{
 	public void proceed(){
 		y += step;
 		if(y > Y_TO_DIE){
-			alive = true;
+			alive = false;
 		}
 	}
 	
