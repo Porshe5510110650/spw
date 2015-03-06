@@ -23,8 +23,8 @@ public class SpaceShip extends Sprite{
 		x += (step * direction);
 		if(x < 0)
 			x = 0;
-		if(x > 800 - width)
-			x = 800 - width;
+		if(x > 2000 - width)
+			x = 2000 - width;
 	}
 
 }
