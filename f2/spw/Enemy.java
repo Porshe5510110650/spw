@@ -8,11 +8,11 @@ public class Enemy extends Sprite{
 	public static final int Y_TO_FADE = 400;
 	public static final int Y_TO_DIE = 600;
 	
-	private int step = 12;
+	private int step = 8;
 	private boolean alive = true;
 	
 	public Enemy(int x, int y) {
-		super(x, y, 10, 20);
+		super(x, y, 12, 15);
 		
 	}
 
@@ -38,5 +38,18 @@ public class Enemy extends Sprite{
 	
 	public boolean isAlive(){
 		return alive;
+	}
+	
+	public boolean isHit(){
+		return hit;
+	}
+	
+	public void getHit(){
+		this.hit = true;
+		this.alive = false;
+	}
+	
+	public void hitMe(){
+		this.alive = false;
 	}
 }
