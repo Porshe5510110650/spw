@@ -11,6 +11,7 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import java.awt.event.*;
 
 public class GamePanel extends JPanel {
 	
@@ -19,13 +20,9 @@ public class GamePanel extends JPanel {
 	ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 
 	public GamePanel() {
-		bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
+		bi = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
 		big = (Graphics2D) bi.getGraphics();
-		big.createImage("1_original.jpg");
-		
-		/*bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
-		big = (Graphics2D) bi.getGraphics();
-		big.setBackground(Color.BLUE);*/
+		big.setBackground(Color.BLUE);
 	}
 
 	public void updateGameUI(GameReporter reporter){
