@@ -5,9 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
 	
