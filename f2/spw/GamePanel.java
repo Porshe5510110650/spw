@@ -20,8 +20,8 @@ public class GamePanel extends JPanel {
 
 	public GamePanel() {
 		bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
-		big = ImageIO.read(new File("D:\Javagame\Map\1_original.jpg"));
-		//big.setBackground("D:\javagame\map\1_original.jpg");
+		big = (Graphics2D) bi.getGraphics();
+		big.setBackground(renk);
 		
 		/*bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
 		big = (Graphics2D) bi.getGraphics();
