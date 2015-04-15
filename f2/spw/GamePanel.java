@@ -15,9 +15,9 @@ public class GamePanel extends JPanel {
 	ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 
 	public GamePanel() {
-		bi = new BufferedImage(400, 600, "D:\Javagame\Map\1_original.jpg");
+		bi = new BufferedImage("D:\Javagame\Map\1_original.jpg");
 		big = (Graphics2D) bi.getGraphics();
-		big.setBackground(Color.BLUE);
+		//big.setBackground(Color.BLUE);
 		
 		/*bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
 		big = (Graphics2D) bi.getGraphics();
