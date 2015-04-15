@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import javax.imageio.ImageIO;
 
 public class GamePanel extends JPanel {
 	
@@ -16,8 +17,8 @@ public class GamePanel extends JPanel {
 
 	public GamePanel() {
 		bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
-		big = (Graphics2D) bi.getGraphics();
-		big.setBackground("D:\javagame\map\1_original.jpg");
+		big = ImageIO.read(new File("D:\javagame\map\1_original.jpg"));
+		//big.setBackground("D:\javagame\map\1_original.jpg");
 		
 		/*bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
 		big = (Graphics2D) bi.getGraphics();
