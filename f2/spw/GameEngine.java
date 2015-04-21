@@ -90,7 +90,6 @@ public class GameEngine implements KeyListener, GameReporter{
 			er = e.getRectangle();
 			if(er.intersects(vr)){
 				e.hitMe();
-				minus();
 				combo = 0;
 				return;
 			}
