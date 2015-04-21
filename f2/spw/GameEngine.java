@@ -15,7 +15,7 @@ public class GameEngine implements KeyListener, GameReporter{
 	GamePanel gp;
 		
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+	private ArrayList<Shot> shots = new ArrayList<Shot>();
 	private SpaceShip v;	
 	private int combo=0;
 	private Timer timer;
@@ -94,7 +94,7 @@ public class GameEngine implements KeyListener, GameReporter{
 				combo = 0;
 				return;
 			}
-			for(Bullet b : bullets){
+			for(Shot b : shots){
 				br = b.getRectangle();
 				if(br.intersects(er)){
 					e.getHit();
