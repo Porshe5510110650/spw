@@ -25,7 +25,7 @@ public class Enemy extends Sprite{
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 
 					(float)(Y_TO_DIE - y)/(Y_TO_DIE - Y_TO_FADE)));
 		}
-		g.setColor(Color.RED);
+		g.setColor(Color.GREEN);
 		g.fillRect(x, y, width, height);
 		
 	}
