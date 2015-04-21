@@ -10,6 +10,7 @@ public class Enemy extends Sprite{
 	
 	private int step = 9;
 	private boolean alive = true;
+	private boolean hit = false;
 	
 	public Enemy(int x, int y) {
 		super(x, y, 12, 15);
@@ -28,7 +29,16 @@ public class Enemy extends Sprite{
 		g.fillRect(x, y, width, height);
 		
 	}
-
+	
+	public boolean isHit(){
+		return hit;
+	}
+	
+	public void getHit(){
+		this.hit = true;
+		this.alive = false;
+	}
+	
 	public void proceed(){
 		y += step;
 		if(y > Y_TO_DIE){
