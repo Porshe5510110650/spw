@@ -16,9 +16,8 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();	
 	private SpaceShip v;	
-	
+	private int combo=0;
 	private Timer timer;
-	
 	private long score = 0;
 	private double difficulty = 0.1;
 	
@@ -28,7 +27,7 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 		gp.sprites.add(v);
 		
-		timer = new Timer(10, new ActionListener() {
+		timer = new Timer(50, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -62,7 +61,18 @@ public class GameEngine implements KeyListener, GameReporter{
 			if(!e.isAlive()){
 				e_iter.remove();
 				gp.sprites.remove(e);
-				score += 5;
+			
+			}
+			if(e.isHit()){
+				combo++;
+				if(combo>10){
+					score += 20;
+					count += 20;
+				}
+				else{
+				score += 10;
+				count += 10;
+				}
 			}
 		}
 		
@@ -70,11 +80,22 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 		Rectangle2D.Double vr = v.getRectangle();
 		Rectangle2D.Double er;
+		Rectangle2D.Double br;
 		for(Enemy e : enemies){
 			er = e.getRectangle();
 			if(er.intersects(vr)){
-				die();
+				e.hitMe();
+				minus();
+				combo = 0;
 				return;
+			}
+			for(Bullet b : bullets){
+				br = b.getRectangle();
+				if(br.intersects(er)){
+					e.getHit();
+					b.getHit();
+					return;
+				}				
 			}
 		}
 	}
