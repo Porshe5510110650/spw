@@ -10,7 +10,6 @@ import java.util.Iterator;
 
 import javax.swing.Timer;
 
-
 public class GameEngine implements KeyListener, GameReporter{
 	GamePanel gp;
 		
@@ -36,7 +35,6 @@ public class GameEngine implements KeyListener, GameReporter{
 			}
 		});
 		timer.setRepeats(true);
-		
 		
 	}
 	
