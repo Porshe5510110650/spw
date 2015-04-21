@@ -15,11 +15,17 @@ public class GameEngine implements KeyListener, GameReporter{
 	GamePanel gp;
 		
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();	
+	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private SpaceShip v;	
 	private int combo=0;
 	private Timer timer;
+	private Timer timercheck;
 	private long score = 0;
 	private double difficulty = 0.1;
+	private int hp = 100;
+	private int nc = 0;
+	private int lp = 0;
+	private long count = 0;
 	
 	public GameEngine(GamePanel gp, SpaceShip v) {
 		this.gp = gp;
@@ -27,19 +33,29 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 		gp.sprites.add(v);
 		
+		timercheck = new Timer(20000, new ActionListener() {	
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+		difficulty += 0.4;
+		check();
+		count = 0;
+			}
+		});
+		
 		timer = new Timer(50, new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				process();
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+		process();
 			}
 		});
 		timer.setRepeats(true);
+		timercheck.setRepeats(true);
 		
 	}
 	
 	public void start(){
 		timer.start();
+		timercheck.start();
 	}
 	
 	private void generateEnemy(){
@@ -52,6 +68,8 @@ public class GameEngine implements KeyListener, GameReporter{
 		if(Math.random() < difficulty){
 			generateEnemy();
 		}
+	
+	
 		
 		Iterator<Enemy> e_iter = enemies.iterator();
 		while(e_iter.hasNext()){
@@ -73,6 +91,17 @@ public class GameEngine implements KeyListener, GameReporter{
 				score += 10;
 				count += 10;
 				}
+			}
+		}
+			
+		Iterator<Bullet> b_iter = bullets.iterator();
+		while(b_iter.hasNext()){
+			Bullet b = b_iter.next();
+			b.proceed();
+			
+			if(!b.isAlive()){
+				b_iter.remove();
+				gp.sprites.remove(b);
 			}
 		}
 		
@@ -100,8 +129,48 @@ public class GameEngine implements KeyListener, GameReporter{
 		}
 	}
 	
+	public void check(){
+		if(count>=500){
+			nc += 1;
+			lp += 1;
+			}
+		if(count < 500 && count >=250){
+			lp += 1;  
+		}
+		if(count<250 && count >= 100){
+			hp = 100;
+		}
+	}
+	
+	public void minus(){
+		hp -= 10 ;
+		if(hp <= 0){
+			die();
+		}
+	
+	}
 	public void die(){
+		if(lp >= 1){
+		lifePoint();
+		lp -= 1 ;
+		}
+		else{
 		timer.stop();
+		timercheck.stop();
+		}
+	}
+	
+	public void lifePoint(){
+			hp = 100;	
+	}
+	
+	public void nuClear(){
+		if(nc >= 1){
+		nc -= 1;
+		for(Enemy e : enemies){
+			e.getHit();
+			}
+		}
 	}
 	
 	void controlVehicle(KeyEvent e) {
@@ -112,14 +181,49 @@ public class GameEngine implements KeyListener, GameReporter{
 		case KeyEvent.VK_RIGHT:
 			v.move(1);
 			break;
-		case KeyEvent.VK_D:
+		/*case KeyEvent.VK_D:
 			difficulty += 0.1;
+			break;*/
+		case KeyEvent.VK_SPACE:
+			fire();
+			break;
+		case KeyEvent.VK_S:
+			nuClear();
 			break;
 		}
+	}
+	
+	public int getLp(){
+		/*int chklp = 0;
+		if(lp == true)
+			chklp = 1;*/
+		return lp;
+	}
+	
+	public int getNc(){
+		/*int chk = 0;
+		if(nc == true)
+			chk = 1;*/
+		return nc;
+	}
+	
+	public int getCombo(){
+		return combo;
+	}
+	
+	
+	public int getHp(){
+		return hp;
 	}
 
 	public long getScore(){
 		return score;
+	}
+	
+	private void fire(){
+		Bullet b = new Bullet((v.x) + (v.width/2) - 5, v.y);
+		gp.sprites.add(b);
+		bullets.add(b);
 	}
 	
 	@Override
@@ -137,4 +241,8 @@ public class GameEngine implements KeyListener, GameReporter{
 	public void keyTyped(KeyEvent e) {
 		//do nothing		
 	}
+	
+	//public void check(int score){
+		
+	
 }
