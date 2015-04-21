@@ -5,13 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JPanel;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import java.awt.event.*;
 
 public class GamePanel extends JPanel {
 	
@@ -30,6 +25,7 @@ public class GamePanel extends JPanel {
 		
 		big.setColor(Color.GREEN);		
 		big.drawString(String.format("%08d", reporter.getScore()), 300, 20);
+		big.drawString(String.format("Combo : %03d", reporter.getCombo()), 260, 40);
 		for(Sprite s : sprites){
 			s.draw(big);
 		}
@@ -40,6 +36,7 @@ public class GamePanel extends JPanel {
 	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		int s0 = 0;
 		g2d.drawImage(bi, null, 0, 0);
 	}
 
