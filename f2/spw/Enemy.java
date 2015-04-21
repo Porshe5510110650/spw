@@ -50,11 +50,6 @@ public class Enemy extends Sprite{
 		return alive;
 	}
 	
-	public void getHit(){
-		this.hit = true;
-		this.alive = false;
-	}
-	
 	public void hitMe(){
 		this.alive = false;
 	}
