@@ -105,17 +105,6 @@ public class GameEngine implements KeyListener, GameReporter{
 		}
 	}
 	
-	public void minus(){
-		hp -= 10 ;
-		if(hp <= 0){
-			die();
-		}
-	
-	}
-	public void die(){
-		timercheck.stop();
-		
-	}
 	
 	void controlVehicle(KeyEvent e) {
 		switch (e.getKeyCode()) {
