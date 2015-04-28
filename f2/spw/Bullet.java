@@ -5,14 +5,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 
-public class Shot extends Sprite{
-	public static final int Y_TO_FADE = 20; 
-	public static final int Y_TO_DIE = 0;
+public class Bullet extends Sprite{
+	public static final int Y_TO_FADE = 20; //distance of bullet that start to fade
+	public static final int Y_TO_DIE = 0; //end of panel, when bullet out of panel it's die
 	
-	private int step = 20; 
+	private int step = 20; //speed of bullet
 	private boolean alive = true;
 	
-	public Shot(int x, int y) {
+	public Bullet(int x, int y) {
 		super(x , y, 5, 15);	
 	}
 
