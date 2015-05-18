@@ -81,7 +81,7 @@ public class GameEngine implements KeyListener, GameReporter{
 				gp.sprites.remove(e);
 				score += 10;
 			}
-			if(e.isHit()){
+			if(!e.isHit()){
 				combo++;
 				if(combo>10){
 					score += 20;
