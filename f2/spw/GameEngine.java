@@ -226,7 +226,15 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 	}
 
-	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		//nothing
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		//nothing		
+	}
 	
 	
 		
