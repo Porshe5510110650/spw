@@ -33,33 +33,33 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 		gp.sprites.add(v);
 		
-		timercheck = new Timer(20000, new ActionListener() {	
+		/*timercheck = new Timer(20000, new ActionListener() {	
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 		difficulty += 0.4;
 		check();
 		count = 0;
 			}
-		});
+		});*/
 		
 		timer = new Timer(50, new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-		process();
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				process();
 			}
 		});
 		timer.setRepeats(true);
-		timercheck.setRepeats(true);
+		//timercheck.setRepeats(true);
 		
 	}
 	
 	public void start(){
 		timer.start();
-		timercheck.start();
+		//timercheck.start();
 	}
 	
 	private void generateEnemy(){
-		Enemy e = new Enemy((int)(Math.random()*420), 70);
+		Enemy e = new Enemy((int)(Math.random()*420), 10);
 		gp.sprites.add(e);
 		enemies.add(e);
 	}
@@ -79,7 +79,7 @@ public class GameEngine implements KeyListener, GameReporter{
 			if(!e.isAlive()){
 				e_iter.remove();
 				gp.sprites.remove(e);
-			
+				score += 10;
 			}
 			if(e.isHit()){
 				combo++;
