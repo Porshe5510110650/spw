@@ -194,16 +194,10 @@ public class GameEngine implements KeyListener, GameReporter{
 	}
 	
 	public int getLp(){
-		/*int chklp = 0;
-		if(lp == true)
-			chklp = 1;*/
 		return lp;
 	}
 	
 	public int getNc(){
-		/*int chk = 0;
-		if(nc == true)
-			chk = 1;*/
 		return nc;
 	}
 	
@@ -232,15 +226,7 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 	}
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		//nothing
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		//nothing		
-	}
+	
 	
 	
 		
