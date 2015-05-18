@@ -33,14 +33,14 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 		gp.sprites.add(v);
 		
-		/*timercheck = new Timer(20000, new ActionListener() {	
+		timercheck = new Timer(20000, new ActionListener() {	
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 		difficulty += 0.4;
 		check();
 		count = 0;
 			}
-		});*/
+		});
 		
 		timer = new Timer(50, new ActionListener() {
 			@Override
@@ -49,13 +49,13 @@ public class GameEngine implements KeyListener, GameReporter{
 			}
 		});
 		timer.setRepeats(true);
-		//timercheck.setRepeats(true);
+		timercheck.setRepeats(true);
 		
 	}
 	
 	public void start(){
 		timer.start();
-		//timercheck.start();
+		timercheck.start();
 	}
 	
 	private void generateEnemy(){
